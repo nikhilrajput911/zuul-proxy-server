@@ -1,0 +1,22 @@
+server:
+  port: 4999
+
+spring:
+  application:
+    name: zuul-gateway-server
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      preferIpAddress: true
+
+zuul:
+  routes:
+    stockCommand:
+        path: /stock-command-service/**
+        url: http://localhost:5000/
+    stockQuery:
+        path: /stock-query-service/**
+        url: http://localhost:5001/
