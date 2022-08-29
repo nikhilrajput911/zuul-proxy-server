@@ -14,9 +14,9 @@ eureka:
 
 zuul:
   routes:
-    stockCommand:
-        path: /stock-command-service/**
-        url: http://localhost:5000/
-    stockQuery:
-        path: /stock-query-service/**
-        url: http://localhost:5001/
+    stock-query-service:
+        path: /api/v1.0/market/stock/**
+        url: http://localhost:5001
+    stock-command-service:
+        path: /api/v1.0/market/stock/**
+        url: http://localhost:5000

@@ -1,6 +1,9 @@
 package com.iiht.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.context.RequestContext;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class RouteFilter extends ZuulFilter {
 
@@ -11,7 +14,7 @@ public class RouteFilter extends ZuulFilter {
 
     @Override
     public int filterOrder() {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -21,7 +24,10 @@ public class RouteFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-        System.out.println("Using Route Filter");
+        RequestContext ctx = RequestContext.getCurrentContext();
+        HttpServletRequest request = ctx.getRequest();
+        System.out.println(
+                "Route Filter, Request Method : " + request.getMethod() + " Request URL : " + request.getRequestURL().toString());
         return null;
     }
 }

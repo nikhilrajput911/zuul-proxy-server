@@ -14,7 +14,7 @@ public class PreFilter extends ZuulFilter {
 
     @Override
     public int filterOrder() {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class PreFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         System.out.println(
-                "Request Method : " + request.getMethod() + " Request URL : " + request.getRequestURL().toString());
+                "Pre Filter, Request Method : " + request.getMethod() + " Request URL : " + request.getRequestURL().toString());
         return null;
     }
 }

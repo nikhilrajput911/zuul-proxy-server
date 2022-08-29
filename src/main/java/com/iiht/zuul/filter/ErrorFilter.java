@@ -1,6 +1,9 @@
 package com.iiht.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.context.RequestContext;
+
+import javax.servlet.http.HttpServletResponse;
 
 public class ErrorFilter extends ZuulFilter {
 
@@ -11,7 +14,7 @@ public class ErrorFilter extends ZuulFilter {
 
     @Override
     public int filterOrder() {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -21,7 +24,8 @@ public class ErrorFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-        System.out.println("Using Route Filter");
+        HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
+        System.out.println("Error Filter, response status: " + response.getStatus());
         return null;
     }
 }
