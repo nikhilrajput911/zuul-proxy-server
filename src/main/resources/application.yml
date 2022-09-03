@@ -5,6 +5,12 @@ spring:
   application:
     name: zuul-gateway-server
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 eureka:
   client:
     serviceUrl:
