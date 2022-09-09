@@ -1,5 +1,5 @@
 server:
-  port: 4999
+  port: 5000
 
 spring:
   application:
@@ -20,9 +20,12 @@ eureka:
 
 zuul:
   routes:
+    stock-command-service:
+      path: /api/v1.0/market/stock/**
+      url: http://localhost:5001
     stock-query-service:
         path: /api/v1.0/market/stock/**
-        url: http://localhost:5001
-    stock-command-service:
-        path: /api/v1.0/market/stock/**
-        url: http://localhost:5000
+        url: http://localhost:5002
+    company-service:
+        path: /api/v1.0/market/company/**
+        url: http:/localhost:5003
