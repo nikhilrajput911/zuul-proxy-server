@@ -26,8 +26,7 @@ public class RouteFilter extends ZuulFilter {
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
-        System.out.println(
-                "Route Filter, Request Method : " + request.getMethod() + " Request URL : " + request.getRequestURL().toString());
+        System.out.println("Route Filter, Request Method : " + request.getMethod() + " Request URL : " + request.getRequestURL().toString());
         return null;
     }
 }

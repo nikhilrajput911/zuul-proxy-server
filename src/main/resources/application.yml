@@ -19,10 +19,11 @@ eureka:
       preferIpAddress: true
 
 zuul:
+  sensitiveHeaders: Cookie,Set-Cookie
   routes:
     stock-command-service:
-      path: /api/v1.0/market/stock/**
-      url: http://localhost:5001
+        path: /api/v1.0/market/stock/**
+        url: http://localhost:5001
     stock-query-service:
         path: /api/v1.0/market/stock/**
         url: http://localhost:5002
